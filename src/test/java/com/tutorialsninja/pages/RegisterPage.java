@@ -7,7 +7,7 @@ public class RegisterPage {
 
 	private WebDriver driver;
 
-	//locators
+	//Web Element locators
 	private By registerPageHeader = By.xpath("//ul[@class='breadcrumb']//a[text()='Register']");
 	
 	
@@ -23,6 +23,7 @@ public class RegisterPage {
 	private By newsletterYesRadio = By.xpath("//input[@name='newsletter'][@value='1']");
 	private By newsletterNoRadio = By.xpath("//input[@name='newsletter'][@value='0']");
 	
+	//Warning locators
 	private By firstNameWarningMessage = By.xpath("//input[@id='input-firstname']/following-sibling::div[contains(@class,'text-danger')]");
 	private By lastNameWarningMessage = By.xpath("//input[@id='input-lastname']/following-sibling::div[contains(@class, 'text-danger')]");
 	private By emailWarningMessage = By.xpath("//input[@id='input-email']/following-sibling::div[contains(@class, 'text-danger')]");
@@ -32,6 +33,12 @@ public class RegisterPage {
 	
 	private By confirmPasswordWarningMessage = By.xpath("//input[@id='input-confirm']/following-sibling::div[contains(@class,'text-danger')]");
 
+	private By existingEmailWarningMessage = By.xpath("//div[contains(@class,'alert-danger') and contains(normalize-space(),'Warning: E-Mail Address is already registered!')]");
+	
+	private By invalidEmailWarningMessage = By.cssSelector(".text-danger");
+	
+	
+	//constructor
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -107,6 +114,25 @@ public class RegisterPage {
 	public String getConfirmPasswordWarningMessage() {
 		return driver.findElement(confirmPasswordWarningMessage).getText();
 	}
+	
+	public String getExistingEmailWarningMessage() {
+		return driver.findElement(existingEmailWarningMessage).getText();
+	}
+	
+	//For Browser validation
+	public String getInvalidEmailWarningMessageFromBrowserValidation() {
+		return driver.findElement(emailInput).getAttribute("validationMessage");
+	}
+	
+	//For UI validation
+    public String getInvalidEmailWarningMessageFromUIValidation() {
+        try {
+            return driver.findElement(invalidEmailWarningMessage).getText();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+	
 	
 	//for different passwords into password and confirm password fields
 	public void registerUser(String firstName, String lastName, String email, String telephone, String password, String confirmPassword) {

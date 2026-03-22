@@ -18,6 +18,13 @@ public class BaseTest {
 
         FirefoxOptions options = new FirefoxOptions();
         options.setBinary("/snap/firefox/current/usr/lib/firefox/firefox");
+        
+        //the website does not trigger server validation. The form submits and Firefox tries to save the password, so the browser shows the Manage Passwords popup.
+        //so if manage password is comes from the browser and not from the website then we cant automate it or we cant inspect it
+        //by clicking the "manage Password" it will redirect to new tab "about:login"
+        //so for avoiding this problem we have to use below 2 conditions.
+        options.addPreference("signon.rememberSignons", false);
+        options.addPreference("signon.autofillForms", false);
 
         driver = new FirefoxDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
