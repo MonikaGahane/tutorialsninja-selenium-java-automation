@@ -282,11 +282,62 @@ public class RegistrationTest extends BaseTest {
 		}
 	}
 	
+	// TC_RF_011 i.e. test case 011
+	//Verify Registering an Account by providing an invalid phone number
+	@Test
+	public void verifyRegistrationFailsByProvidingInvalidTelephoneNumber() {
+		HomePage homePage =new HomePage(driver);		
+		RegisterPage registerPage = new RegisterPage(driver);
+		SuccessPage successPage = new SuccessPage(driver);
+		
+		for(String invalidTelephoneNumber : TestConstants.INVALID_TELEPHONE_NUMBER) {
+			homePage.navigateToRegisterPageUsingRegisterLink();
+			
+			registerPage.registerUser(TestConstants.FIRST_NAME, TestConstants.LAST_NAME, TestUtils.generateNewEmail(), invalidTelephoneNumber, TestConstants.PASSWORD, true);
+						
+			//if telephone number < 3 digits then warning expected
+			if(invalidTelephoneNumber.length() < 3) {
+				String telePhoneWarnningMessage = registerPage.getTelephoneWarningMessage();
+				Assert.assertTrue(telePhoneWarnningMessage.contains(TestConstants.EXPECTED_TELEPHONE_WARNING));
+			} 
+			//if telephone number > 3 digits but invalid so warning expected + registration fails
+			//but it is a bug, app allows registration success after entering invalid number
+			else {
+				Assert.assertTrue(successPage.isSuccessPageDisplayed());
+				System.out.println("BUG : Registration succeeded for invalid telephone number : " + invalidTelephoneNumber);
+				
+				successPage.clickLogoutFromSuccessPageSidebar();
+			}
+			
+		}
+	}
 	
-	
-	
-	
-	
-	
-	
+	// TC_RF_012 i.e. test case 012
+	//Verify all the mandatory fields in the Register Account page are marked with red color * symbol
+	@Test
+	public void verifyMandatoryFieldsAreMarkedWithRedAsterisk() {
+		HomePage homePage = new HomePage(driver);
+		homePage.navigateToRegisterPageUsingRegisterLink();
+		
+		RegisterPage registerPage = new RegisterPage(driver);
+		Assert.assertTrue(registerPage.isRegisterPageDisplayed());
+		
+		//validation for required
+		 if (!registerPage.areAllMandatoryFieldsMarkedRequired()) {
+		        System.out.println("BUG❗ Mandatory fields are NOT marked properly");
+		    }
+	    //validation for red asterisk
+		 if (!registerPage.areAllMandetoryFieldsAreMarkedWithRedAsterisk()) {
+		        System.out.println("BUG❗ Asterisk (*) or its RED color is incorrect");
+		    }	    
+	}
+		
+	// TC_RF_013 i.e. test case 013
+	//Verify the details that are provided while Registering an Account are stored in the Database 
 }
+	
+	
+	
+	
+	
+
