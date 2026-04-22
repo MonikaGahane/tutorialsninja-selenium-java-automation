@@ -57,15 +57,23 @@ public class TestConstants {
         
     //constant array of string (invalid emails) for test data storage
     public static final String[] INVALID_EMAIL = {
-    		"monika", "monika@", "12345gmail", "monika@gmail", "monika@gmail."    		
+    		"monika", "monika@", "12345gmail", "monika@gmail", "monika@gmail.", "    @gmail.com"   		
     };
     
     //constant string array of invalid telephone numbers for test data
     public static final String[] INVALID_TELEPHONE_NUMBER = {
-    		"0987654321", "123456", "abcdef", "r1", "123abc", "!@#$$", "98765abc"   		
+    		"0987654321", "123456", "abcdef", "r1", "123abc", "!@#$$", "98765abc", "    "		
     };
     
+    //constant string array of passwords which are not following the password complexity standards
+    public static final String[] INVALID_PASSWORD = {
+    		"12345", "abcde", "     ", "!@#$", "QWERT", "QaZwS"
+    };
     
+    public static final String EXPECTED_REGISTER_PAGE_HEADING = "Register Account";
+    public static final String EXPECTED_REGISTER_PAGE_TITLE = "Register Account";
+    public static final String EXPECTED_REGISTER_PAGE_URL = "route=account/register";
+    public static final String EXPECTED_REGISTER_PAGE_BREADCRUMB = "Account Register";
     
     
 }

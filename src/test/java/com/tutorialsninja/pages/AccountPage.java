@@ -32,4 +32,8 @@ public class AccountPage {
     public void navigateToNewsletterPage() {
     	driver.findElement(subscribeOrUnsubscribeToNewsletter).click();
     }
+    
+    public void navigateToEditAccountInfoPage() {
+    	driver.findElement(editAccountInfo).click();
+    }
 }

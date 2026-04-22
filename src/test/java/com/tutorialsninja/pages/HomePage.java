@@ -37,7 +37,7 @@ public class HomePage {
 
 		// explicit wait
 		// for preventing failure of selenium
-		new WebDriverWait(driver, Duration.ofSeconds(5))
+		new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.id("input-firstname")));
 
 	}
@@ -45,11 +45,6 @@ public class HomePage {
 	public void navigateToRegisterPageUsingLoginLink() {
 		clickMyAccount();
 		clickLoginLink();
-
-		// explicit wait
-		// for preventing failure of selenium
-		new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.id("input-firstname")));
 
 	}
 
