@@ -7,20 +7,20 @@
 		</packages>
     </test>
 
-//Use below if we want to test on Chrome or Edge simultaneously with firefox
+<!--Use below if we want to test on Chrome or Edge simultaneously with firefox -->
+<!--
+    <test name="Chrome Test">
+        <parameter name="browser" value="chrome"/>
+		<packages>
+    		<package name="com.tutorialsninja.tests"/>
+		</packages>
+    </test>
 
-//    <test name="Chrome Test">
-//        <parameter name="browser" value="chrome"/>
-//		<packages>
-//    		<package name="com.tutorialsninja.tests"/>
-//		</packages>
-//    </test>
-
-//    <test name="Edge Test">
-//        <parameter name="browser" value="edge"/>
-//		<packages>
-//    		<package name="com.tutorialsninja.tests"/>
-//		</packages>
-//    </test>
-
+    <test name="Edge Test">
+        <parameter name="browser" value="edge"/>
+		<packages>
+    		<package name="com.tutorialsninja.tests"/>
+		</packages>
+    </test>
+-->
 </suite>
