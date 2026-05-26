@@ -12,13 +12,23 @@ public class LoginPage {
 	
 	private WebDriver driver;
 	
-	private By loginPageHeader = By.xpath("//ul[@class='breadcrumb']//a[text()='Login']");
-	private By newCustomerContinueButton = By.xpath("//a[text()='Continue']");
-	private By registerLinkFromLoginSidebar = By.xpath("//aside[@id='column-right']//a[text()='Register']");
-	
+	//constructor
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
+	//Web element locators
+	private By loginPageHeader = By.xpath("//ul[@class='breadcrumb']//a[text()='Login']");
+	
+	private By newCustomerContinueButton = By.xpath("//a[text()='Continue']");
+	private By registerLinkFromLoginSidebar = By.xpath("//aside[@id='column-right']//a[text()='Register']");
+	
+	private By emailAddressInput = By.id("input-email");
+	private By passwordInput = By.id("input-password");
+	private By loginButton = By.xpath("//input[@value='Login']");
+	
+	private By invalidLoginWarningMessage = By.xpath("//div[contains(@class,'alert-danger')]");
+	
+	private By forgottenPasswordLink = By.xpath("//a[normalize-space()='Forgotten Password']");
 	
 	public boolean isLoginPageDisplayed() {
 		return driver.findElement(loginPageHeader).isDisplayed();
@@ -35,6 +45,24 @@ public class LoginPage {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    WebElement registerLink = wait.until(ExpectedConditions.elementToBeClickable(registerLinkFromLoginSidebar));
 	    registerLink.click();
+	}
+	
+	public void loginUser(String emailAddress, String password) {
+		driver.findElement(emailAddressInput).sendKeys(emailAddress);
+		driver.findElement(passwordInput).sendKeys(password);
+		driver.findElement(loginButton).click();
+	}
+	
+	public void loginUserWithoutProvidingAnyData() {
+		driver.findElement(loginButton).click();
+	}
+	
+	public void clickOnForgottenPasswordLink() {
+		driver.findElement(forgottenPasswordLink).click();
+	}
+	
+	public String getInvalidLoginWarningMessage() {
+		return driver.findElement(invalidLoginWarningMessage).getText();
 	}
 
 }

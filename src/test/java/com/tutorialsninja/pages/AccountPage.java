@@ -12,7 +12,7 @@ public class AccountPage {
     private By newsletterHeading = By.xpath("//div[@id='content']//h2[text()='Newsletter']");
     private By subscribeOrUnsubscribeToNewsletter = By.xpath("//div[@id='content' and @class='col-sm-9']//a[normalize-space()='Subscribe / unsubscribe to newsletter']");
     
-    
+    private By logoutLinkFromAccountPageSidebar = By.xpath("//aside[@id='column-right']//a[normalize-space()='Logout']");
     public AccountPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -35,5 +35,9 @@ public class AccountPage {
     
     public void navigateToEditAccountInfoPage() {
     	driver.findElement(editAccountInfo).click();
+    }
+    
+    public void logoutUser() {
+    	driver.findElement(logoutLinkFromAccountPageSidebar).click();
     }
 }

@@ -47,5 +47,11 @@ public class HomePage {
 		clickLoginLink();
 
 	}
+	
+	public void navigateToLoginPageUsingLoginLink() {
+		clickMyAccount();
+		clickLoginLink();
+
+	}
 
 }

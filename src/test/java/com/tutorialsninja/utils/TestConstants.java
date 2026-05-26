@@ -31,7 +31,13 @@ public class TestConstants {
 	public static final String TELEPHONE = "9812345678";
     public static final String PASSWORD = "123456";
     
-    public static final String EXISTING_EMAIL = "monika08@gmail.com";   		
+    public static final String EMAIL_ADDRESS = "mon25@gmail.com";
+    
+    public static final String EXISTING_EMAIL = "monika08@gmail.com"; 
+    
+    public static final String INVALID_LOGIN_EMAIL_ADDRESS = "xyzabc123@gmail.com";
+    
+    public static final String INVALID_LOGIN_PASSWORD = "xyzabc123";
     
     //Success page expected messages
   	//final static because they are constants
@@ -54,7 +60,10 @@ public class TestConstants {
     
     //Warning message for existing email 
     public static final String EXPECTED_EXISTING_EMAIL_WARNING = "Warning: E-Mail Address is already registered!";
-        
+     
+    //Warning message for login with invalid credentials
+    public static final String EXPECTED_INVALID_LOGIN_WARNING = "Warning: No match for E-Mail Address and/or Password.";
+    
     //constant array of string (invalid emails) for test data storage
     public static final String[] INVALID_EMAIL = {
     		"monika", "monika@", "12345gmail", "monika@gmail", "monika@gmail.", "    @gmail.com"   		

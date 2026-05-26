@@ -18,7 +18,7 @@ import com.tutorialsninja.utils.TestUtils;
 public class RegistrationTest extends BaseTest {
 	
 	// TC_RF_001 i.e test case 001
-	//Verify Registering an Account by providing only the Mandatory fields
+	// Verify Registering an Account by providing only the Mandatory fields
 	@Test
 	public void verifyUserCanRegisterWithValidDetails() {
 
@@ -46,8 +46,8 @@ public class RegistrationTest extends BaseTest {
 		Assert.assertTrue(accountPage.isAccountPageDisplayed(), "Account page is not displayed");
 	}
 	
-	//TC_RF_002 i.e. test case 002
-	//Verify 'Thank you for registering' email is sent to the registered email address as a confirmation for registering the account
+	// TC_RF_002 i.e. test case 002
+	// Verify 'Thank you for registering' email is sent to the registered email address as a confirmation for registering the account
 	@Test
 	public void verifyUserReceivesAnEmailOfConfirmationAfterSuccessfulRegistration() {
 		System.out.println(" TC_RF_002 : "
@@ -82,7 +82,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_003 i.e. test case 003
-	//Verify Registering an Account by providing all the fields
+	// Verify Registering an Account by providing all the fields
 	@Test
 	public void verifyUserCanRegisterWithAllFields() {
 		System.out.println(" TC_RF_003 : "
@@ -111,7 +111,7 @@ public class RegistrationTest extends BaseTest {
 	}
 
 	// TC_RF_004 i.e test case 004
-	//Verify proper notification messages are displayed for the mandatory fields, when you don't provide any fields in the 'Register Account' page and submit
+	// Verify proper notification messages are displayed for the mandatory fields, when you don't provide any fields in the 'Register Account' page and submit
 	@Test
 	public void verifyUserCannotRegisterWithoutFillingMandatoryFields() {
 		System.out.println(" TC_RF_004 : "
@@ -123,14 +123,14 @@ public class RegistrationTest extends BaseTest {
 		RegisterPage registerPage = new RegisterPage(driver);
 		registerPage.clickContinueWithoutFillingAnything();
 
-		String actalFirstNameWarning = registerPage.getFirstNameWarningMessage();
+		String actualFirstNameWarning = registerPage.getFirstNameWarningMessage();
 	    String actualLastNameWarning = registerPage.getLastNameWarningMessage();
 	    String actualEmailWarning = registerPage.getEmailWarningMessage();
 	    String actualTelephoneWarning = registerPage.getTelephoneWarningMessage();
 	    String actualPasswordWarning = registerPage.getPasswordWarningMessage();
 	    String actualPrivacyPolicyWarning = registerPage.getPrivacyPolicyWarningMessage();
 
-		Assert.assertEquals(actalFirstNameWarning, TestConstants.EXPECTED_FIRST_NAME_WARNING);
+		Assert.assertEquals(actualFirstNameWarning, TestConstants.EXPECTED_FIRST_NAME_WARNING);
 		Assert.assertEquals(actualLastNameWarning, TestConstants.EXPECTED_LAST_NAME_WARNING);
 		Assert.assertEquals(actualEmailWarning, TestConstants.EXPECTED_EMAIL_WARNING);
 		Assert.assertEquals(actualTelephoneWarning, TestConstants.EXPECTED_TELEPHONE_WARNING);
@@ -140,7 +140,7 @@ public class RegistrationTest extends BaseTest {
 	}
 
 	// TC_RF_005 i.e. test case 005
-	//Verify Registering an Account when 'Yes' option is selected for Newsletter field
+	// Verify Registering an Account when 'Yes' option is selected for Newsletter field
 	@Test
 	public void verifyUserCanRegisterWithNewsletterSubscriptionYes() {
 		System.out.println(" TC_RF_005 : "
@@ -177,7 +177,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_006 i.e. test case 006
-	//Verify Registering an Account when 'No' option is selected for Newsletter field
+	// Verify Registering an Account when 'No' option is selected for Newsletter field
 	@Test
 	public void verifyUserCanRegisterWithNewsletterSubscriptionNo() {
 		System.out.println(" TC_RF_006 : "
@@ -214,7 +214,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_007 i.e. test case 007
-	//Verify different ways of navigating to 'Register Account' page
+	// Verify different ways of navigating to 'Register Account' page
 	@Test
 	public void verifyMultipleWaysOfNavigatingToRegisterPage() {
 		System.out.println(" TC_RF_007 : "
@@ -244,7 +244,7 @@ public class RegistrationTest extends BaseTest {
 
 	
 	// TC_RF_008 i.e. test case 008
-	//Verify Registering an Account by entering different passwords into 'Password' and 'Password Confirm' fields
+	// Verify Registering an Account by entering different passwords into 'Password' and 'Password Confirm' fields
 	@Test
 	public void verifyRegistrationFailsWhenPasswordsDoNotMatch() {
 		System.out.println(" TC_RF_008 : "
@@ -263,7 +263,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_009 i.e. test case 009
-	//Verify Registering an Account by providing the existing account details (i.e. existing email address)
+	// Verify Registering an Account by providing the existing account details (i.e. existing email address)
 	@Test
 	public void verifyRegistrationFailsByProvidingExistingDetails() {
 		System.out.println(" TC_RF_009 : "
@@ -282,7 +282,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_010 i.e. test case 010
-	//Verify Registering an Account by providing an invalid email address into the E-Mail field
+	// Verify Registering an Account by providing an invalid email address into the E-Mail field
 	@Test
 	public void verifyRegistrationFailsByProvidingInvalidEmail() {
 		System.out.println(" TC_RF_010 : "
@@ -316,7 +316,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_011 i.e. test case 011
-	//Verify Registering an Account by providing an invalid phone number
+	// Verify Registering an Account by providing an invalid phone number
 	@Test
 	public void verifyRegistrationFailsByProvidingInvalidTelephoneNumber() {
 		System.out.println(" TC_RF_011 : "
@@ -337,7 +337,7 @@ public class RegistrationTest extends BaseTest {
 				Assert.assertTrue(telePhoneWarnningMessage.contains(TestConstants.EXPECTED_TELEPHONE_WARNING));
 			} 
 			//if telephone number > 3 digits but invalid so warning expected + registration fails
-			//but it is a bug, app allows registration success after entering invalid number
+			//but this is a bug, the application allows successful registration even after entering an invalid phone number.
 			else {
 				Assert.assertTrue(successPage.isSuccessPageDisplayed());
 				System.out.println("BUG : Registration succeeded for invalid telephone number : " + invalidTelephoneNumber);
@@ -349,7 +349,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_012 i.e. test case 012
-	//Verify all the mandatory fields in the Register Account page are marked with red color * symbol
+	// Verify all the mandatory fields in the Register Account page are marked with red color * symbol
 	@Test
 	public void verifyMandatoryFieldsAreMarkedWithRedAsterisk() {
 		System.out.println(" TC_RF_012 : "
@@ -446,7 +446,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_014 i.e. test case 014
-	//Verify whether the Password fields in the Register Account page are following Password Complexity Standards
+	// Verify whether the Password fields in the Register Account page are following Password Complexity Standards
 	@Test 
 	public void verifyPasswordComplexityStandardsOnRegisterPage() {
 		System.out.println(" TC_RF_014 : "
@@ -482,7 +482,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_015 i.e. test case 015
-	//Verify whether the leading and trailing spaces entered into the Register Account fields are trimmed
+	// Verify whether the leading and trailing spaces entered into the Register Account fields are trimmed
 	@Test
 	public void verifyLeadingAndTrailingSpacesAreTrimmedInRegisterFields() {
 		System.out.println(" TC_RF_015 : "
@@ -510,7 +510,7 @@ public class RegistrationTest extends BaseTest {
 		Assert.assertTrue(accountPage.isAccountPageDisplayed(), "Account page is not displayed");
 		accountPage.navigateToEditAccountInfoPage();
 		
-		EditAccountInfo editAccountInfo = new EditAccountInfo(driver);
+		EditAccountInfoPage editAccountInfo = new EditAccountInfoPage(driver);
 		Assert.assertTrue(editAccountInfo.isEditInformationPageDisplayed(), "EditInformation page is not displayed");
 		
 		String actualFirstName = editAccountInfo.getFirstNameInputFieldValue();
@@ -553,7 +553,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_016 i.e. test case 016
-	//Verify whether the 'Privacy Policy' check-box option is not selected by default
+	// Verify whether the 'Privacy Policy' check-box option is not selected by default
 	@Test
 	public void verifyPrivacyPolicyCheckboxIsNotSelectedByDefault() {
 		System.out.println(" TC_RF_016 : "
@@ -578,7 +578,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_017 i.e. test case 017
-	//Verify Registering the Account without selecting the 'Privacy Policy' check-box option
+	// Verify Registering the Account without selecting the 'Privacy Policy' check-box option
 	@Test
 	public void verifyRegistrationFailsWhenPrivacyPolicyCheckboxIsNotSelected() {
 		System.out.println(" TC_RF_017 : "
@@ -600,7 +600,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_018 i.e. test case 018
-	//Verify the Password text entered into the 'Password' and 'Password Confirm' field of 'Register Account' functionality is toggled to hide its visibility
+	// Verify the Password text entered into the 'Password' and 'Password Confirm' field of 'Register Account' functionality is toggled to hide its visibility
 	@Test
 	public void verifyPasswordAndConfirmPasswordFieldsAreHiddenOnRegisterPage() {
 		System.out.println(" TC_RF_018 : "
@@ -625,7 +625,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_019 i.e. test case 019
-	//Verify navigating to other pages using the options or links provided on the 'Register Account' page 
+	// Verify navigating to other pages using the options or links provided on the 'Register Account' page 
 	@Test
 	public void verifyNavigationToDifferentPagesFromRegisterPage() {
 		System.out.println(" TC_RF_019 : "
@@ -744,7 +744,7 @@ public class RegistrationTest extends BaseTest {
 	
 	
 	// TC_RF_020 i.e. test case 020
-	//Verify Registering an Account, by filling 'Password' field and not filling 'Password Confirm' field
+	// Verify Registering an Account, by filling 'Password' field and not filling 'Password Confirm' field
 	@Test
 	public void verifyRegistrationFailsWhenPasswordConfirmFieldIsBlank() {
 		System.out.println(" TC_RF_020 : "
@@ -773,7 +773,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_021 i.e. test case 021
-	//Verify the Breadcrumb, Page Heading, Page URL, Page Title of 'Register Account' Page
+	// Verify the Breadcrumb, Page Heading, Page URL, Page Title of 'Register Account' Page
 	@Test
 	public void verifyRegisterPageUIElements() {
 		System.out.println(" TC_RF_021 : "
@@ -804,7 +804,7 @@ public class RegistrationTest extends BaseTest {
 	}
 	
 	// TC_RF_022 i.e. test case 022
-	//Verify the UI of the 'Register Account' page
+	// Verify the UI of the 'Register Account' page
 	@Test
 	public void verifyRegisterPageUICompletely() {
 		System.out.println(" TC_RF_022 : "
@@ -872,6 +872,13 @@ public class RegistrationTest extends BaseTest {
 	        TestUtils.captureScreenshot(driver, "TC_RF_022_RegisterAccountUI_Failure");
 	        throw e;
 	    }
+	}
+	
+	// TC_RF_023 i.e. test case 023
+	// Verify Registering an Account by using Keyboard keys
+	@Test
+	public void verifyUserCanRegisterUsingKeyboardKeys() {
+		
 	}
 	
 }

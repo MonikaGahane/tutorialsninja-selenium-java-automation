@@ -3,12 +3,12 @@ package com.tutorialsninja.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class EditAccountInfo {
+public class EditAccountInfoPage {
 	
 	private WebDriver driver;
 	
 	//constructor
-	public EditAccountInfo(WebDriver driver) {
+	public EditAccountInfoPage(WebDriver driver) {
 		this.driver = driver;
 	}
 	
