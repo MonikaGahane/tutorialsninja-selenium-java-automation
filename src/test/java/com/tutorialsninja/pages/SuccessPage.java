@@ -1,7 +1,12 @@
 package com.tutorialsninja.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SuccessPage {
 
@@ -12,14 +17,16 @@ public class SuccessPage {
     }
 
     //locators
-    private By successHeading = By.xpath("//h1[text()='Your Account Has Been Created!']");
+    private By successHeader = By.xpath("//ul[@class='breadcrumb']//a[normalize-space()='Success']");
     private By contentText = By.id("content");
     private By continueButton = By.linkText("Continue");
     private By logoutButtonFromSuccessPageSidebar = By.xpath("//aside[@id='column-right']//a[text()='Logout']");
    
 
     public boolean isSuccessPageDisplayed() {
-        return driver.findElement(successHeading).isDisplayed();
+    	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+    	return wait.until(ExpectedConditions.visibilityOfElementLocated(successHeader)).isDisplayed();
+        
     }
 
     public String getSuccessContent() {

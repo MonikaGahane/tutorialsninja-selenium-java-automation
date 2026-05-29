@@ -874,11 +874,34 @@ public class RegistrationTest extends BaseTest {
 	    }
 	}
 	
-	// TC_RF_023 i.e. test case 023
+	// TC_RF_024 i.e. test case 024
 	// Verify Registering an Account by using Keyboard keys
 	@Test
 	public void verifyUserCanRegisterUsingKeyboardKeys() {
-		
+		System.out.println(" TC_RF_024 : "
+				+"Verify Registering an Account by using Keyboard keys");		
+
+	    HomePage homePage = new HomePage(driver);
+	    homePage.navigateToRegisterPageUsingRegisterLink();
+
+	    RegisterPage registerPage = new RegisterPage(driver);
+	    registerPage.registerUserUsingKeyboardKeys(TestConstants.FIRST_NAME, TestConstants.LAST_NAME, TestUtils.generateNewEmail(), TestConstants.TELEPHONE, TestConstants.PASSWORD, true);
+	    
+	    SuccessPage successPage = new SuccessPage(driver);
+		Assert.assertTrue(successPage.isSuccessPageDisplayed() ,  "Success page is not displayed");
+
+		String content = successPage.getSuccessContent();
+		Assert.assertTrue(content.contains(TestConstants.SUCCESS_MSG_1));
+		Assert.assertTrue(content.contains(TestConstants.SUCCESS_MSG_2));
+		Assert.assertTrue(content.contains(TestConstants.SUCCESS_MSG_3));
+		Assert.assertTrue(content.contains(TestConstants.SUCCESS_MSG_4));
+		Assert.assertTrue(content.contains(TestConstants.SUCCESS_MSG_5));
+
+		successPage.clickContinue();
+
+		AccountPage accountPage = new AccountPage(driver);
+		Assert.assertTrue(accountPage.isAccountPageDisplayed(), "Account page is not displayed");
+
 	}
 	
 }

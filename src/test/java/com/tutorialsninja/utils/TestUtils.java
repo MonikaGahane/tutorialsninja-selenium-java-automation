@@ -6,9 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class TestUtils {
 
@@ -41,5 +43,13 @@ public class TestUtils {
 	        e.printStackTrace();
 	    }
 	}
+	
+	public static void pressTabKey(WebDriver driver, int count) {
+		Actions actions = new Actions(driver);
+		for (int i = 1; i <= count; i++) {
+			actions.sendKeys(Keys.TAB).perform();
+		}
+	}
+
 }
 

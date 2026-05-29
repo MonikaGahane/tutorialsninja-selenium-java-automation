@@ -144,7 +144,26 @@ public class LoginTest extends BaseTest{
 	// Verify logging into the Application using Keyboard keys (Tab and Enter)
 	@Test
 	public void verifyUserCanLoginUsingTabAndEnterKeys() {
-
+		System.out.println(" TC_LF_007 : "
+				+ "Verify logging into the Application using Keyboard keys (Tab and Enter)");
+		
+		HomePage homePage = new HomePage(driver);
+		homePage.navigateToLoginPageUsingLoginLink();
+		
+		LoginPage loginPage = new LoginPage(driver);
+		
+		Assert.assertTrue(loginPage.isLoginPageDisplayed(), "Login Page is not displayed");
+		
+		loginPage.loginUserUsingKeyboardKeys(TestConstants.EMAIL_ADDRESS, TestConstants.PASSWORD);
+		
+		AccountPage accountPage = new AccountPage(driver);
+		Assert.assertTrue(accountPage.isAccountPageDisplayed(), "Account Page is not displayed");
+		
+		accountPage.logoutUser();
+		
+		LogoutPage logoutPage = new LogoutPage(driver);
+		Assert.assertTrue(logoutPage.isLogoutPageDisplayed(), "Logout Page is not displayed");
+		logoutPage.clickOnContinueButton();
 	}
 	
 	

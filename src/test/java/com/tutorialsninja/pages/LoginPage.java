@@ -3,10 +3,14 @@ package com.tutorialsninja.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.tutorialsninja.utils.TestUtils;
 
 public class LoginPage {
 	
@@ -55,6 +59,18 @@ public class LoginPage {
 	
 	public void loginUserWithoutProvidingAnyData() {
 		driver.findElement(loginButton).click();
+	}
+	
+	public void loginUserUsingKeyboardKeys(String emailAddress, String password) {
+		
+		TestUtils.pressTabKey(driver, 23);
+
+		Actions actions = new Actions(driver);
+
+		actions.pause(Duration.ofSeconds(2)).sendKeys(emailAddress).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(password).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB).pause(Duration.ofSeconds(2)).sendKeys(Keys.ENTER)
+				.build().perform();
 	}
 	
 	public void clickOnForgottenPasswordLink() {

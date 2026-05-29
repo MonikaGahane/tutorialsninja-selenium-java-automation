@@ -4,12 +4,15 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.tutorialsninja.utils.TestUtils;
 
 public class RegisterPage {
 
@@ -136,6 +139,29 @@ public class RegisterPage {
 		driver.findElement(continueButton).click();
 	}
 	
+	public void registerUserUsingKeyboardKeys(String firstName, String lastName, String email, String telephone,
+			String password, boolean subscribeNewsletter) {
+
+		TestUtils.pressTabKey(driver, 23);
+
+		Actions actions = new Actions(driver);
+
+		actions.pause(Duration.ofSeconds(2)).sendKeys(firstName).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(lastName).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(email).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(telephone).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(password).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(password).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB);
+
+		if (subscribeNewsletter) {
+			actions.pause(Duration.ofSeconds(2)).sendKeys(Keys.ARROW_RIGHT);
+		}
+		actions.pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB).pause(Duration.ofSeconds(2)).sendKeys(Keys.TAB)
+				.pause(Duration.ofSeconds(2)).sendKeys(Keys.SPACE).sendKeys(Keys.TAB).pause(Duration.ofSeconds(2))
+				.sendKeys(Keys.ENTER).pause(Duration.ofSeconds(2))
+				.build().perform();
+	}
+
 	//for not filling data
 	public void clickContinueWithoutFillingAnything() {
 		driver.findElement(continueButton).click();
