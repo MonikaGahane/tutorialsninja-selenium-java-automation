@@ -21,11 +21,11 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
-    public void setUp(@Optional("firefox") String browser) {
+    public void setUp(@Optional("edge") String browser) {
 
     	if(browser.equalsIgnoreCase("firefox")) {
     		FirefoxOptions options = new FirefoxOptions();
-            options.setBinary("/snap/firefox/current/usr/lib/firefox/firefox");
+            //options.setBinary("/snap/firefox/current/usr/lib/firefox/firefox");
             
             //the website does not trigger server validation. The form submits and Firefox tries to save the password, so the browser shows the Manage Passwords popup.
             //So if "manage password" is comes from the browser and not from the website then we can't automate it or we can't inspect it

@@ -17,6 +17,7 @@ public class AccountPage {
     private By subscribeOrUnsubscribeToNewsletter = By.xpath("//div[@id='content' and @class='col-sm-9']//a[normalize-space()='Subscribe / unsubscribe to newsletter']");
     
     private By logoutLinkFromAccountPageSidebar = By.xpath("//aside[@id='column-right']//a[normalize-space()='Logout']");
+    
     public AccountPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -26,7 +27,8 @@ public class AccountPage {
     }
 
     public boolean isAccountPageDisplayed() {
-        return driver.findElement(accountPageHeading).isDisplayed();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	return wait.until(ExpectedConditions.visibilityOfElementLocated(accountPageHeading)).isDisplayed();
     }
     
     public boolean isNewsletterHeadingDisplayed() {

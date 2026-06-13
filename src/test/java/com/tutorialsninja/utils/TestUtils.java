@@ -22,7 +22,7 @@ public class TestUtils {
 	//For capturing Screenshots
 	public static void captureScreenshot(WebDriver driver, String fileName) {
 		try {
-	        File folder = new File("Screenshots");  
+	        File folder = new File("screenshots");  
 	        if (!folder.exists()) {
 	            folder.mkdir();
 	        }
@@ -49,6 +49,10 @@ public class TestUtils {
 		for (int i = 1; i <= count; i++) {
 			actions.sendKeys(Keys.TAB).perform();
 		}
+	}
+	
+	public static void navigateBack(WebDriver driver) {
+		driver.navigate().back();
 	}
 
 }

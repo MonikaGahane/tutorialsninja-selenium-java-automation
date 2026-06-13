@@ -22,12 +22,11 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- Source:
-		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.40.0</version>
+			<version>4.44.0</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -38,7 +37,7 @@
 			<version>7.12.0</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Source: https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
 		    <groupId>commons-io</groupId>

@@ -31,11 +31,11 @@ public class TestConstants {
 	public static final String TELEPHONE = "9812345678";
     public static final String PASSWORD = "123456";
     
-    public static final String EMAIL_ADDRESS = "mon25@gmail.com";
+    public static final String EMAIL_ADDRESS = "mon08@gmail.com";
     
     public static final String EXISTING_EMAIL = "monika08@gmail.com"; 
     
-    public static final String INVALID_LOGIN_EMAIL_ADDRESS = "xyzabc123@gmail.com";
+    public static final String INVALID_LOGIN_EMAIL_ADDRESS = "xyzabc1123@gmail.com";
     
     public static final String INVALID_LOGIN_PASSWORD = "xyzabc123";
     
@@ -64,6 +64,9 @@ public class TestConstants {
     //Warning message for login with invalid credentials
     public static final String EXPECTED_INVALID_LOGIN_WARNING = "Warning: No match for E-Mail Address and/or Password.";
     
+    //Warning message for multiple attempts of login with invalid credentials (Valid Email but Invalid Password)
+    public static final String EXPECTED_INVALID_LOGIN_WARNING_fOR_MULTIPLE_ATTEMPTS = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
+    
     //constant array of string (invalid emails) for test data storage
     public static final String[] INVALID_EMAIL = {
     		"monika", "monika@", "12345gmail", "monika@gmail", "monika@gmail.", "    @gmail.com"   		
@@ -84,5 +87,6 @@ public class TestConstants {
     public static final String EXPECTED_REGISTER_PAGE_URL = "route=account/register";
     public static final String EXPECTED_REGISTER_PAGE_BREADCRUMB = "Account Register";
     
-    
+    public static final String EXPECTED_LOGIN_EMAIL_ADDRESS_PLACEHOLDER = "E-Mail Address";
+    public static final String EXPECTED_LOGIN_PASSWORD_PLACEHOLDER = "Password";
 }

@@ -57,7 +57,7 @@ public class RegisterPage {
 
 	private By existingEmailWarningMessage = By.xpath("//div[contains(@class,'alert-danger') and contains(normalize-space(),'Warning: E-Mail Address is already registered!')]");
 	
-	private By invalidEmailWarningMessage = By.cssSelector(".text-danger");
+	private By invalidEmailWarningMessage = By.xpath("//div[contains(@class,'text-danger') and contains(normalize-space(),'E-Mail Address does not appear to be valid!')]");
 	
 	//Label Locators
 	//private By firstNameLabel = By.xpath("//label[@for='input-firstname']"); ==> it is okay
