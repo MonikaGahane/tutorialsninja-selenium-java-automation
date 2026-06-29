@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.tutorialsninja.base.BaseTest;
@@ -22,6 +23,8 @@ import com.tutorialsninja.pages.SuccessPage;
 import com.tutorialsninja.utils.TestConstants;
 import com.tutorialsninja.utils.TestUtils;
 
+
+@Listeners(com.tutorialsninja.utils.TestUtils.class)
 public class RegistrationTest extends BaseTest {
 
 	private HomePage homePage;
@@ -45,7 +48,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_001 i.e test case 001
 	// Verify Registering an Account by providing only the Mandatory fields
-	@Test
+	@Test(priority = 1)
 	public void verifyUserCanRegisterWithValidDetails() {
 
 		System.out.println(" TC_RF_001 : " + "Verify Registering an Account by providing only the Mandatory fields");
@@ -70,7 +73,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_002 i.e. test case 002
 	// Verify 'Thank you for registering' email is sent to the registered email address as a confirmation for registering the account
-	@Test
+	@Test(priority = 2)
 	public void verifyUserReceivesAnEmailOfConfirmationAfterSuccessfulRegistration() {
 		System.out.println(" TC_RF_002 : "
 				+ "Verify 'Thank you for registering' email is sent to the registered email address as a confirmation for registering the account");
@@ -103,7 +106,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_003 i.e. test case 003
 	// Verify Registering an Account by providing all the fields
-	@Test
+	@Test(priority = 3)
 	public void verifyUserCanRegisterWithAllFields() {
 		System.out.println(" TC_RF_003 : " + "Verify Registering an Account by providing all the fields");
 
@@ -128,7 +131,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_004 i.e test case 004
 	// Verify proper notification messages are displayed for the mandatory fields, when you don't provide any fields in the 'Register Account' page and submit
-	@Test
+	@Test(priority = 4)
 	public void verifyUserCannotRegisterWithoutFillingMandatoryFields() {
 		System.out.println(" TC_RF_004 : "
 				+ "Verify proper notification messages are displayed for the mandatory fields, when you don't provide any fields in the 'Register Account' page and submit");
@@ -155,7 +158,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_005 i.e. test case 005
 	// Verify Registering an Account when 'Yes' option is selected for Newsletter field
-	@Test
+	@Test(priority = 5)
 	public void verifyUserCanRegisterWithNewsletterSubscriptionYes() {
 		System.out.println(
 				" TC_RF_005 : " + "Verify Registering an Account when 'Yes' option is selected for Newsletter field");
@@ -187,7 +190,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_006 i.e. test case 006
 	// Verify Registering an Account when 'No' option is selected for Newsletter field
-	@Test
+	@Test(priority = 6)
 	public void verifyUserCanRegisterWithNewsletterSubscriptionNo() {
 		System.out.println(
 				" TC_RF_006 : " + "Verify Registering an Account when 'No' option is selected for Newsletter field");
@@ -219,7 +222,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_007 i.e. test case 007
 	// Verify different ways of navigating to 'Register Account' page
-	@Test
+	@Test(priority = 7)
 	public void verifyMultipleWaysOfNavigatingToRegisterPage() {
 		System.out.println(" TC_RF_007 : " + "Verify different ways of navigating to 'Register Account' page");
 
@@ -243,7 +246,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_008 i.e. test case 008
 	// Verify Registering an Account by entering different passwords into 'Password' and 'Password Confirm' fields
-	@Test
+	@Test(priority = 8)
 	public void verifyRegistrationFailsWhenPasswordsDoNotMatch() {
 		System.out.println(" TC_RF_008 : "
 				+ "Verify Registering an Account by entering different passwords into 'Password' and 'Password Confirm' fields");
@@ -260,7 +263,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_009 i.e. test case 009
 	// Verify Registering an Account by providing the existing account details (i.e. existing email address)
-	@Test
+	@Test(priority = 9)
 	public void verifyRegistrationFailsByProvidingExistingDetails() {
 		System.out.println(" TC_RF_009 : "
 				+ "Verify Registering an Account by providing the existing account details (i.e. existing email address)");
@@ -277,7 +280,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_010 i.e. test case 010
 	// Verify Registering an Account by providing an invalid email address into the E-Mail field
-	@Test
+	@Test(priority = 10)
 	public void verifyRegistrationFailsByProvidingInvalidEmail() {
 		System.out.println(" TC_RF_010 : "
 				+ "Verify Registering an Account by providing an invalid email address into the E-Mail field");
@@ -309,7 +312,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_011 i.e. test case 011
 	// Verify Registering an Account by providing an invalid phone number
-	@Test
+	@Test(priority = 11)
 	public void verifyRegistrationFailsByProvidingInvalidTelephoneNumber() {
 		System.out.println(" TC_RF_011 : " + "Verify Registering an Account by providing an invalid phone number");
 
@@ -341,7 +344,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_012 i.e. test case 012
 	// Verify all the mandatory fields in the Register Account page are marked with red color * symbol
-	@Test
+	@Test(priority = 12)
 	public void verifyMandatoryFieldsAreMarkedWithRedAsterisk() {
 		System.out.println(" TC_RF_012 : "
 				+ "Verify all the mandatory fields in the Register Account page are marked with red color * symbol");
@@ -362,7 +365,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_013 i.e. test case 013
 	// Verify whether the Mandatory fields in the Register Account page are not accepting only spaces
-	@Test
+	@Test(priority = 13)
 	public void verifyRegistrationFailsByProvidingOnlySpacesIntoMandatoryFields() {
 		System.out.println(" TC_RF_013 : "
 				+ "Verify whether the Mandatory fields in the Register Account page are not accepting only spaces");
@@ -393,7 +396,6 @@ public class RegistrationTest extends BaseTest {
 					"Telephone must be between 3 and 32 characters!");
 			Assert.assertEquals(registerPage.getPasswordWarningMessage(),
 					"Password must be between 4 and 20 characters!");
-
 		}
 
 		// Trying for multiple spaces into mandatory fields with valid email id
@@ -411,28 +413,28 @@ public class RegistrationTest extends BaseTest {
 
 		if (firstNameWarningMessage.isEmpty()) {
 			System.out.println("BUG : First Name field accepts only spaces");
-			TestUtils.captureScreenshot(driver, "TC_RF_014_FirstName_Spaces_Bug");
+			TestUtils.captureScreenshot(driver, "TC_RF_013_FirstName_Spaces_Bug");
 		} else {
 			Assert.assertEquals(firstNameWarningMessage, TestConstants.EXPECTED_FIRST_NAME_WARNING);
 		}
 
 		if (lastNameWarningMessage.isEmpty()) {
 			System.out.println("BUG : Last Name field accepts only spaces");
-			TestUtils.captureScreenshot(driver, "TC_RF_014_LastName_Spaces_Bug");
+			TestUtils.captureScreenshot(driver, "TC_RF_013_LastName_Spaces_Bug");
 		} else {
 			Assert.assertEquals(lastNameWarningMessage, TestConstants.EXPECTED_LAST_NAME_WARNING);
 		}
 
 		if (telephoneWarningMessage.isEmpty()) {
 			System.out.println("BUG : Telephone field accepts only spaces");
-			TestUtils.captureScreenshot(driver, "TC_RF_014_Telephone_Spaces_Bug");
+			TestUtils.captureScreenshot(driver, "TC_RF_013_Telephone_Spaces_Bug");
 		} else {
 			Assert.assertEquals(telephoneWarningMessage, TestConstants.EXPECTED_TELEPHONE_WARNING);
 		}
 
 		if (passwordWarningMessage.isEmpty()) {
 			System.out.println("BUG : Password field accepts only spaces");
-			TestUtils.captureScreenshot(driver, "TC_RF_014_Password_Spaces_Bug");
+			TestUtils.captureScreenshot(driver, "TC_RF_013_Password_Spaces_Bug");
 		} else {
 			Assert.assertEquals(passwordWarningMessage, TestConstants.EXPECTED_PASSWORD_WARNING);
 		}
@@ -441,7 +443,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_014 i.e. test case 014
 	// Verify whether the Password fields in the Register Account page are following Password Complexity Standards
-	@Test
+	@Test(priority = 14)
 	public void verifyPasswordComplexityStandardsOnRegisterPage() {
 		System.out.println(" TC_RF_014 : "
 				+ "Verify whether the Password fields in the Register Account page are following Password Complexity Standards");
@@ -474,7 +476,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_015 i.e. test case 015
 	// Verify whether the leading and trailing spaces entered into the Register Account fields are trimmed
-	@Test
+	@Test(priority = 15)
 	public void verifyLeadingAndTrailingSpacesAreTrimmedInRegisterFields() {
 		System.out.println(" TC_RF_015 : "
 				+ "Verify whether the leading and trailing spaces entered into the Register Account fields are trimmed");
@@ -541,7 +543,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_016 i.e. test case 016
 	// Verify whether the 'Privacy Policy' check-box option is not selected by default
-	@Test
+	@Test(priority = 16)
 	public void verifyPrivacyPolicyCheckboxIsNotSelectedByDefault() {
 		System.out.println(
 				" TC_RF_016 : " + "Verify whether the 'Privacy Policy' check-box option is not selected by default");
@@ -564,7 +566,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_017 i.e. test case 017
 	// Verify Registering the Account without selecting the 'Privacy Policy' check-box option
-	@Test
+	@Test(priority = 17)
 	public void verifyRegistrationFailsWhenPrivacyPolicyCheckboxIsNotSelected() {
 		System.out.println(" TC_RF_017 : "
 				+ "Verify Registering the Account without selecting the 'Privacy Policy' check-box option");
@@ -584,7 +586,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_018 i.e. test case 018
 	// Verify the Password text entered into the 'Password' and 'Password Confirm' field of 'Register Account' functionality is toggled to hide its visibility
-	@Test
+	@Test(priority = 18)
 	public void verifyPasswordAndConfirmPasswordInputsAreHiddenOnRegisterPage() {
 		System.out.println(" TC_RF_018 : "
 				+ "Verify the Password text entered into the 'Password' and 'Password Confirm' field of 'Register Account' functionality is toggled to hide its visibility");
@@ -608,7 +610,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_019 i.e. test case 019
 	// Verify navigating to other pages using the options or links provided on the 'Register Account' page
-	@Test
+	@Test(priority = 19)
 	public void verifyNavigationToDifferentPagesFromRegisterPage() {
 		System.out.println(" TC_RF_019 : "
 				+ "Verify navigating to other pages using the options or links provided on the 'Register Account' page");
@@ -726,7 +728,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_020 i.e. test case 020
 	// Verify Registering an Account, by filling 'Password' field and not filling 'Password Confirm' field
-	@Test
+	@Test(priority = 20)
 	public void verifyRegistrationFailsWhenPasswordConfirmFieldIsBlank() {
 		System.out.println(" TC_RF_020 : "
 				+ "Verify Registering an Account, by filling 'Password' field and not filling 'Password Confirm' field");
@@ -756,7 +758,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_021 i.e. test case 021
 	// Verify the Breadcrumb, Page Heading, Page URL, Page Title of 'Register Account' Page
-	@Test
+	@Test(priority = 21)
 	public void verifyRegisterPageUIElements() {
 		System.out.println(" TC_RF_021 : "
 				+ "Verify the Breadcrumb, Page Heading, Page URL, Page Title of 'Register Account' Page");
@@ -788,7 +790,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_022 i.e. test case 022
 	// Verify the UI of the 'Register Account' page
-	@Test
+	@Test(priority = 22)
 	public void verifyRegisterPageUICompletely() {
 		System.out.println(" TC_RF_022 : " + "Verify the UI of the 'Register Account' page");
 
@@ -859,7 +861,7 @@ public class RegistrationTest extends BaseTest {
 
 	// TC_RF_024 i.e. test case 024
 	// Verify Registering an Account by using Keyboard keys
-	@Test
+	@Test(priority = 24)
 	public void verifyUserCanRegisterUsingKeyboardKeys() {
 		System.out.println(" TC_RF_024 : " + "Verify Registering an Account by using Keyboard keys");
 

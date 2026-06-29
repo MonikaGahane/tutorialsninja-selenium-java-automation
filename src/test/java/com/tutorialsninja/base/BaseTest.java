@@ -68,4 +68,8 @@ public class BaseTest {
     public void closeBrowser() {
         driver.quit();
     }
+
+	public WebDriver getDriver() {
+	    return driver;
+	}
 }

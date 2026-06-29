@@ -11,9 +11,13 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 
-public class TestUtils {
+import com.tutorialsninja.base.BaseTest;
 
+public class TestUtils implements ITestListener{
+	
 	//for generating new email every-time while registration
 	public static String generateNewEmail() {
 		return new Date().toString().replaceAll(" ", "").replaceAll(":", "") + "@gmail.com";
@@ -44,6 +48,19 @@ public class TestUtils {
 	    }
 	}
 	
+	//onTestFailure method is defined in ITestListener interface
+	@Override
+	public void onTestFailure(ITestResult result) {
+		Object testClass = result.getInstance();
+        WebDriver driver = ((BaseTest) testClass).getDriver();
+
+        String testName = result.getName();
+        captureScreenshot(driver, testName);
+
+        System.out.println("Screenshot captured for failed test: " + testName);
+    
+	}
+	
 	public static void pressTabKey(WebDriver driver, int count) {
 		Actions actions = new Actions(driver);
 		for (int i = 1; i <= count; i++) {
@@ -54,6 +71,12 @@ public class TestUtils {
 	public static void navigateBack(WebDriver driver) {
 		driver.navigate().back();
 	}
-
+	
+	//for getting the HTML code of the page
+	public static String getPageSource(WebDriver driver) {
+		return driver.getPageSource();
+	}
+	
+	
 }
 

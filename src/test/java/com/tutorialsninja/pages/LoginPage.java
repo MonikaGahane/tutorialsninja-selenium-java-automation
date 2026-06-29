@@ -111,6 +111,15 @@ public class LoginPage {
 	public void enterLoginPassword() {
 		driver.findElement(passwordInput).sendKeys(TestConstants.PASSWORD);
 	}
+	
+	public void enterLoginEmailAddress() {
+		driver.findElement(emailAddressInput).sendKeys(TestConstants.EMAIL_ADDRESS);
+	}
+	
+	public void enterInvalidLoginCredentials() {
+		driver.findElement(emailAddressInput).sendKeys(TestConstants.EMAIL_ADDRESS);
+		driver.findElement(passwordInput).sendKeys(TestConstants.INVALID_PASSWORD);
+	}
 
 	public String getLoginPasswordFieldType() {
 		return driver.findElement(passwordInput).getAttribute("type");
@@ -143,7 +152,7 @@ public class LoginPage {
 		Actions actions = new Actions(driver);
 		actions.contextClick(loginPasswordField).perform();
 		
-		copiedTextPasteIntoEmailField();
-		
+		copiedTextPasteIntoEmailField();		
 	}
+	
 }

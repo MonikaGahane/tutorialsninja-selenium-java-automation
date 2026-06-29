@@ -29,9 +29,9 @@ public class TestConstants {
 	public static final String FIRST_NAME = "Monika";
 	public static final String LAST_NAME = "Gahane";
 	public static final String TELEPHONE = "9812345678";
-    public static final String PASSWORD = "123456";
+    public static final String PASSWORD = "mon@23";
     
-    public static final String EMAIL_ADDRESS = "mon08@gmail.com";
+    public static final String EMAIL_ADDRESS = "mon2526@gmail.com";
     
     public static final String EXISTING_EMAIL = "monika08@gmail.com"; 
     

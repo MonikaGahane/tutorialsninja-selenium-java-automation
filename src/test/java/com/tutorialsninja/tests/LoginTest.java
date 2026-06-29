@@ -258,5 +258,54 @@ public class LoginTest extends BaseTest{
 		
 	}
 		
+	// TC_LF_014
+	// Verify the Password is not visible in the Page Source
+	@Test
+	public void verifyPasswordNotVisibleInPageSource() {
+		System.out.println(" TC_LF_014 : " 
+				+ "Verify the Password is not visible in the Page Source");
+		
+		loginPage.enterLoginPassword();
+		try {
+			String pageSourceBeforeLogin = TestUtils.getPageSource(driver);	
+			Assert.assertFalse(pageSourceBeforeLogin.contains(TestConstants.PASSWORD), "Password should not be visible in page source before login!");
+			
+		} catch(AssertionError e) {
+			TestUtils.captureScreenshot(driver, "TC_LF_014_BeforeLoginPasswordStoredInHTMLBug");
+			throw e;
+		}
+		
+		loginPage.clickOnLoginButton();
+		
+		try {
+			String pageSourceAfterLogin = TestUtils.getPageSource(driver);
+			Assert.assertFalse(pageSourceAfterLogin.contains(TestConstants.PASSWORD), "Password should not be visible in page source after login!");
+		
+		} catch(AssertionError e) {
+			TestUtils.captureScreenshot(driver, "TC_LF_014_AfterLoginPasswordStoredInHTMLBug");
+			throw e;
+		}
+	}
 	
+	// TC_LF_015
+	// Verify the Password is not visible in the Page Source before and after successful and unsuccessful login
+	@Test
+	public void verifyPasswordNotVisibleInPageSourceForValidAndInvalidLogin() {
+		System.out.println(" TC_LF_015 : " 
+				+ "Verify the Password is not visible in the Page Source before and after successful and unsuccessful login");
+		
+		loginPage.enterLoginEmailAddress();
+		loginPage.enterLoginPassword();
+		try {
+			String pageSourceBeforeLogin = TestUtils.getPageSource(driver);
+			Assert.assertFalse(pageSourceBeforeLogin.contains(TestConstants.PASSWORD), "Password should not be visible in page source before login!");
+			
+		} catch(AssertionError e) {
+			TestUtils.captureScreenshot(driver, "TC_LF_15_BeforeValidLoginPasswordStoredInHTMLBug");
+			throw e;
+		}
+		
+		
+	}
+
 }
